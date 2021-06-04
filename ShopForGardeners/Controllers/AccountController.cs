@@ -141,7 +141,7 @@ namespace ShopForGardeners.Controllers
                 System.Diagnostics.Debug.WriteLine("debug: " + Verification.Code + " and " + VerifiticationCode.ToString() + " and ");
                 if (model.Verification.Equals(Verification.Code.ToString()))
                 {
-                    return Redirect("/Product/Index");
+                    return Redirect("/Items/List");
 
                 }
                 else
