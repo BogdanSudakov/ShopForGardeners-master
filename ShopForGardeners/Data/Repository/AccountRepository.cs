@@ -1,9 +1,7 @@
 ﻿using ShopForGardeners.Data.Interfaces;
 using ShopForGardeners.Data.Models;
 using ShopForGardeners.ViewModels;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace ShopForGardeners.Data.Repository
@@ -18,15 +16,16 @@ namespace ShopForGardeners.Data.Repository
 
 
 
-        public  IEnumerable<User> AllAccounts =>  this.appDBContent.User;
+        public IEnumerable<User> AllAccounts => this.appDBContent.User;
 
         public async Task createUser(RegisterViewModel user)
         {
-            this.appDBContent.User.Add(new User {
-            Name = user.Name,
-            Email = user.Email,
-            Password = user.Password,
-            Login = user.Login,
+            this.appDBContent.User.Add(new User
+            {
+                Name = user.Name,
+                Email = user.Email,
+                Password = user.Password,
+                Login = user.Login,
             });
 
             await appDBContent.SaveChangesAsync();

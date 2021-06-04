@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace ShopForGardeners.Data.Models
 {
@@ -11,7 +8,7 @@ namespace ShopForGardeners.Data.Models
 
         public string CategoryName { get; set; }
 
-        public string Desription { get; set; } 
+        public string Desription { get; set; }
 
         public List<GardeningItem> GardeningItems { get; set; }
 

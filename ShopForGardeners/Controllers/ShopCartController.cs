@@ -2,10 +2,7 @@
 using ShopForGardeners.Data.Interfaces;
 using ShopForGardeners.Data.Models;
 using ShopForGardeners.ViewModels;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace ShopForGardeners.Controllers
 {
@@ -28,7 +25,7 @@ namespace ShopForGardeners.Controllers
             var items = _shopcart.getShopCartItems();
             _shopcart.listShopItems = items;
 
-            
+
 
             var obj = new ShopCartViewModel
             {

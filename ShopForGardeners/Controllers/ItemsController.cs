@@ -1,15 +1,14 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using ShopForGardeners.Data;
+using ShopForGardeners.Data.Interfaces;
+using ShopForGardeners.Data.Models;
+using ShopForGardeners.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Unicode;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using ShopForGardeners.Data;
-using ShopForGardeners.Data.Interfaces;
-using ShopForGardeners.Data.Models;
-using ShopForGardeners.ViewModels;
 
 namespace ShopForGardeners.Controllers
 {
@@ -90,7 +89,7 @@ namespace ShopForGardeners.Controllers
                 CurrCategory = currCategory
             };
 
-            
+
             //View(model)
             return View(itemObj);
         }

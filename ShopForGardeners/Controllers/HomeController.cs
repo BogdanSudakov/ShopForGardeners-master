@@ -2,10 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using ShopForGardeners.Data.Interfaces;
 using ShopForGardeners.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ShopForGardeners.Controllers
 {
@@ -18,7 +14,7 @@ namespace ShopForGardeners.Controllers
             _itemRep = itemRep;
 
         }
-       [Authorize]
+        [Authorize]
         public ViewResult Index()
         {
             ViewBag.Title = "start page";

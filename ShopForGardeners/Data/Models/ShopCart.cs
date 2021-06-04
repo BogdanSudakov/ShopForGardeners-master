@@ -4,7 +4,6 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace ShopForGardeners.Data.Models
 {
@@ -26,7 +25,7 @@ namespace ShopForGardeners.Data.Models
             var context = services.GetService<AppDBContent>();
             //CartId (key)
             string shopCartId = session.GetString("CartId") ?? Guid.NewGuid().ToString();
-            
+
             session.SetString("CartId", shopCartId);
 
             return new ShopCart(context) { ShopCartId = shopCartId };
@@ -57,7 +56,7 @@ namespace ShopForGardeners.Data.Models
             return appDBContent.ShopCartItem.Where(c => c.ShopCartId == ShopCartId).Include(s => s.Item).ToList();
         }
 
-        public ShopCartItem getShopCartItem (int id)
+        public ShopCartItem getShopCartItem(int id)
         {
             return appDBContent.ShopCartItem.First(c => c.ShopCartId == ShopCartId && c.Item.Id == id);
         }

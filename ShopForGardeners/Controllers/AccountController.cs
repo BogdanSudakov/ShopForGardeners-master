@@ -1,23 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using ShopForGardeners.Data.Interfaces;
 using ShopForGardeners.Data.Models;
-using Microsoft.AspNetCore.Identity;
-using ShopForGardeners.ViewModels;
-using System.Net.Mail;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNetCore.Authentication;
 using ShopForGardeners.Models;
+using ShopForGardeners.ViewModels;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Mail;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace ShopForGardeners.Controllers
 {
-    [Authorize]
+
     public class AccountController : Controller
     {
         private readonly IAccount _iaccount;
@@ -139,7 +138,6 @@ namespace ShopForGardeners.Controllers
                             ModelState.AddModelError("", "An error occured during the process, please try again!");
                             return View(usermdl);
                         }
-
                     }
                 }
             }
@@ -156,7 +154,6 @@ namespace ShopForGardeners.Controllers
                 if (model.Verification.Equals(Verification.Code.ToString()))
                 {
                     return Redirect("/Product/Index");
-
                 }
                 else
                 {
@@ -179,14 +176,12 @@ namespace ShopForGardeners.Controllers
 
         private async Task Authenticate(string userName)
         {
-            // создаем один claim
             var claims = new List<Claim>
             {
                 new Claim(ClaimsIdentity.DefaultNameClaimType, userName)
             };
-            // создаем объект ClaimsIdentity
+
             ClaimsIdentity id = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
-            // установка аутентификационных куки
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id));
         }
 
@@ -196,7 +191,4 @@ namespace ShopForGardeners.Controllers
             return RedirectToAction("Login", "Account");
         }
     }
-
-
-
 }

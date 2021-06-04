@@ -1,12 +1,6 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using ShopForGardeners.Data.Interfaces;
-using ShopForGardeners.Data.Models;
-using ShopForGardeners.Data.Repository;
-using System;
+﻿using ShopForGardeners.Data.Models;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace ShopForGardeners.Data
 {
@@ -28,11 +22,11 @@ namespace ShopForGardeners.Data
             content.SaveChanges();
         }
         private static Dictionary<string, Category> category;
-        public static Dictionary<string,Category> Categories
+        public static Dictionary<string, Category> Categories
         {
             get
             {
-                if(category == null)
+                if (category == null)
                 {
                     var list = new Category[]
                     {
@@ -46,20 +40,20 @@ namespace ShopForGardeners.Data
                     {
                         category.Add(el.CategoryName, el);
                     }
-                    
+
                 }
                 return category;
             }
 
         }
-        
-        private static Dictionary<string,GardeningItem> item;
-        
+
+        private static Dictionary<string, GardeningItem> item;
+
         public static Dictionary<string, GardeningItem> items
         {
             get
             {
-                if(item == null)
+                if (item == null)
                 {
                     var list = new GardeningItem[]
                     {

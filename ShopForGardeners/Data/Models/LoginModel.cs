@@ -1,4 +1,3 @@
-using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace ShopForGardeners.ViewModels
@@ -11,6 +10,6 @@ namespace ShopForGardeners.ViewModels
         [UIHint("password")]
         public string Password { get; set; }
         public string ReturnUrl { get; set; } = "/";
-       // public object ReturnUrl { get; internal set; }
+        // public object ReturnUrl { get; internal set; }
     }
 }

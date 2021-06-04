@@ -6,7 +6,7 @@ namespace ShopForGardeners.ViewModels
 {
     public class LoginViewModel
     {
-        
+
         [Required(ErrorMessage = "The Login must be filled")]
         public string Login { get; set; }
 
@@ -14,7 +14,7 @@ namespace ShopForGardeners.ViewModels
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        
+
 
 
 

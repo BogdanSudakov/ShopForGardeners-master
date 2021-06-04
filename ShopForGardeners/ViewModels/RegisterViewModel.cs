@@ -25,7 +25,7 @@ namespace ShopForGardeners.ViewModels
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        
+
         [DataType(DataType.Password)]
         [Compare("Password", ErrorMessage = "Password entered incorrectly")]
         public string ConfirmPassword { get; set; }
