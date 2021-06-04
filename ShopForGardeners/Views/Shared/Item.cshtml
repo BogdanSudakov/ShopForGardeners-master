@@ -1,0 +1,25 @@
+﻿@model GardeningItem
+
+
+    <div class="col-lg-4">
+        <img class="img-thumbnail " src="@Model.Img" alt="@Model.Name" />
+        <h3>
+            @Model.Name
+        </h3>
+        <p>
+            @Model.ShortDesc
+        </p>
+        <p>
+            @Model.Price.ToString("C", new CultureInfo("en-US"))
+
+        </p>
+        <p>
+            <a class="btn btn-warning" asp-controller="ShopCart" asp-action="addToCart"
+               asp-route-Id="@Model.Id"> Add to Basket </a>
+        </p>
+        <p>
+            <a class="btn btn-light" asp-controller="Items" asp-action="MoreDetails"
+               asp-route-Id="@Model.Id"> more details </a>
+        </p>
+
+    </div>

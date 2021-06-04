@@ -1,0 +1,20 @@
+﻿@model ShopCartViewModel
+@using System.Globalization
+@{
+}
+
+<div class="container">
+    @foreach (var el in Model.shopCart.listShopItems)
+    {
+    <div class="alert alert-warning mt-3">
+
+        <b>Car: </b> @el.Item.Name<br />
+        <b>Price: </b> @el.Item.Price.ToString("C", new CultureInfo("en-US"))
+        <a class="btn btn-warning" asp-controller="ShopCart" asp-action="deleteToItem"
+           asp-route-id="@el.Item.Id"> delete to item </a>
+
+    </div>
+    }
+    <hr />
+    <a class="btn btn-danger" asp-controller="order" asp-action="Checkout">checkout</a>
+</div>

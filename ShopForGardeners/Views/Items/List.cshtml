@@ -1,0 +1,14 @@
+﻿@model ItemsListViewModels
+<h1>@Model.CurrCategory</h1>
+
+<div class="row mt-5 mb-2">
+    @{
+
+        foreach (GardeningItem item in Model.GetAllItems)
+        {
+            @await Html.PartialAsync("Item", item)
+        }
+    }
+</div>
+
+

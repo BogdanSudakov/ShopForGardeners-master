@@ -1,0 +1,29 @@
+﻿@model GardeningItem
+
+<h3>@Model.Category.CategoryName</h3>
+
+
+
+<div class="col-lg-4">
+    <img class="img-thumbnail " src="@Model.Img" alt="@Model.Name" />
+    <h3>
+        @Model.Name
+    </h3>
+    <p>
+        @Model.ShortDesc
+    </p>
+    <p>
+        @Model.Price.ToString("C", new CultureInfo("en-US"))
+
+    </p>
+
+    <p>
+        @Model.LongDesc
+
+    </p>
+
+    <p>
+        <a class="btn btn-warning" asp-controller="ShopCart" asp-action="addToCart"
+           asp-route-id="@Model.Id"> Add to Basket </a>
+    </p>
+</div>

@@ -1,0 +1,13 @@
+﻿@model HomeViewModel
+
+    <h1>The best items    </h1>
+<h3>@ViewBag.Login</h3>
+<div class="row mt-5 mb-2">
+    @{
+
+        foreach (GardeningItem item in Model.favItems)
+        {
+            @await Html.PartialAsync("Item", item)
+        }
+    }
+</div>
