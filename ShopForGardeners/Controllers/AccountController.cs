@@ -79,9 +79,10 @@ namespace ShopForGardeners.Controllers
                     UserName = model.Login,
                     Email = model.Email
                 };
-                User user = _iaccount.AllAccounts.FirstOrDefault(u => u.Login == model.Login);
-                Microsoft.AspNetCore.Identity.IdentityResult result
-                    = await userManager.CreateAsync(user, model.Password);
+
+                //User user = _iaccount.AllAccounts.FirstOrDefault(u => u.Login == model.Login);
+                Microsoft.AspNetCore.Identity.IdentityResult result = await userManager.CreateAsync(user, model.Password);
+
                 if (result.Succeeded)
                 {
                     // добавляем пользователя в бд
@@ -112,17 +113,14 @@ namespace ShopForGardeners.Controllers
             Verification.Code = new Random().Next(1000, 9999);
             if (ModelState.IsValid)
             {
-                AppUser user =
-                await userManager.FindByNameAsync(usermdl.Name);
+                AppUser user = await userManager.FindByNameAsync(usermdl.Name);
                 if (user != null)
                 {
                     await signInManager.SignOutAsync();
-                    if ((await signInManager.PasswordSignInAsync(user,
-                    usermdl.Password, false, false)).Succeeded)
+                    if ((await signInManager.PasswordSignInAsync(user, usermdl.Password, false, false)).Succeeded)
                     {
                         try
                         {
-
                             MailMessage mail = new MailMessage();
                             mail.To.Add(user.Email);
                             mail.From = new MailAddress("linuxkalibsuir@gmail.com");
@@ -136,7 +134,7 @@ namespace ShopForGardeners.Controllers
                             smtp.Send(mail);
                             return Redirect("/Account/Confirm");
                         }
-                        catch (Exception e)
+                        catch (Exception)
                         {
                             ModelState.AddModelError("", "An error occured during the process, please try again!");
                             return View(usermdl);
