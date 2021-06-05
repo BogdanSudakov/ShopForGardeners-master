@@ -20,10 +20,12 @@ namespace ShopForGardeners.Controllers
     public class AccountController : Controller
     {
         private readonly IAccount _iaccount;
-        private int VerificationCode = 4973;
+        private int VerificationCode;
         public AccountController(IAccount iaccount)
         {
             _iaccount = iaccount;
+            VerificationCode = new Random().Next(1000, 9999);
+            
         }
 
         [HttpGet]
