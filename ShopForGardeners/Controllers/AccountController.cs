@@ -53,7 +53,7 @@ namespace ShopForGardeners.Controllers
         [AllowAnonymous]
         public ViewResult Login(string returnrUrl)
         {
-            VerifiticationCode = new Random().Next(1000, 9999);
+            VerificationCode = new Random().Next(1000, 9999);
             return View(new LoginModel
             {
                 ReturnUrl = returnrUrl
@@ -128,7 +128,7 @@ namespace ShopForGardeners.Controllers
         {
             if (ModelState.IsValid)
             {
-                System.Diagnostics.Debug.WriteLine("debug: " + VerificationCode + " and " + VerifiticationCode.ToString() + " and ");
+                System.Diagnostics.Debug.WriteLine("debug: " + VerificationCode + " and " + VerificationCode.ToString() + " and ");
                 if (model.Verification.Equals(VerificationCode.ToString()))
                 {
                     return RedirectToAction("Index", "Home");
