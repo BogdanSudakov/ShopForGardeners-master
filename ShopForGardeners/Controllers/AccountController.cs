@@ -92,7 +92,7 @@ namespace ShopForGardeners.Controllers
                         smtp.Credentials = new System.Net.NetworkCredential("linuxkalibsuir@gmail.com", "KaliTest123");
                         smtp.EnableSsl = true;
                         smtp.Send(mail);
-                        return Redirect("/Account/Confirm");
+                        return RedirectToAction("Confirm", "Account");
                     }
                     catch (Exception e)
                     {
