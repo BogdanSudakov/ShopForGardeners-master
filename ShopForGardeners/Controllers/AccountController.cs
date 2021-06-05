@@ -84,9 +84,10 @@ namespace ShopForGardeners.Controllers
                     mail.Subject = "Verification";
                     mail.Body = "Your code is: " + Verification.Code;
                     mail.IsBodyHtml = true;
-                    SmtpClient smtp = new SmtpClient("smtp.gmail.com", 465);
+                    SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
                     smtp.UseDefaultCredentials = false;
                     smtp.Credentials = new System.Net.NetworkCredential("lab6spo@gmail.com", "My##my00");
+                    smtp.EnableSsl = true;
 
                     smtp.Send(mail);
                     return RedirectToAction("Confirm", "Account");
