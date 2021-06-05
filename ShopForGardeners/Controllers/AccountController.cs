@@ -80,14 +80,14 @@ namespace ShopForGardeners.Controllers
 
                     MailMessage mail = new MailMessage();
                     mail.To.Add(model.Email);
-                    mail.From = new MailAddress("linuxkalibsuir@gmail.com");
+                    mail.From = new MailAddress("lab6spo@gmail.com");
                     mail.Subject = "Verification";
                     mail.Body = "Your code is: " + Verification.Code;
                     mail.IsBodyHtml = true;
-                    SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
+                    SmtpClient smtp = new SmtpClient("smtp.gmail.com", 465);
                     smtp.UseDefaultCredentials = false;
-                    smtp.Credentials = new System.Net.NetworkCredential("linuxkalibsuir@gmail.com", "KaliTest123");
-                    smtp.EnableSsl = true;
+                    smtp.Credentials = new System.Net.NetworkCredential("lab6spo@gmail.com", "My##my00");
+
                     smtp.Send(mail);
                     return RedirectToAction("Confirm", "Account");
                 }
