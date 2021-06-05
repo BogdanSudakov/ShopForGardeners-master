@@ -20,7 +20,7 @@ namespace ShopForGardeners.Controllers
     public class AccountController : Controller
     {
         private readonly IAccount _iaccount;
-        private int VerifiticationCode = 4973;
+        private int VerificationCode = 4973;
         public AccountController(IAccount iaccount)
         {
             _iaccount = iaccount;
@@ -82,7 +82,7 @@ namespace ShopForGardeners.Controllers
                     mail.To.Add(model.Email);
                     mail.From = new MailAddress("lab6spo@gmail.com");
                     mail.Subject = "Verification";
-                    mail.Body = "Your code is: " + Verification.Code;
+                    mail.Body = "Your code is: " + VerificationCode;
                     mail.IsBodyHtml = true;
                     SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
                     smtp.UseDefaultCredentials = false;
@@ -128,8 +128,8 @@ namespace ShopForGardeners.Controllers
         {
             if (ModelState.IsValid)
             {
-                System.Diagnostics.Debug.WriteLine("debug: " + Verification.Code + " and " + VerifiticationCode.ToString() + " and ");
-                if (model.Verification.Equals(Verification.Code.ToString()))
+                System.Diagnostics.Debug.WriteLine("debug: " + VerificationCode + " and " + VerifiticationCode.ToString() + " and ");
+                if (model.Verification.Equals(VerificationCode.ToString()))
                 {
                     return RedirectToAction("Index", "Home");
                 }
