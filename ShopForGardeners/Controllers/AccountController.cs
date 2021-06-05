@@ -78,29 +78,18 @@ namespace ShopForGardeners.Controllers
                     await _iaccount.createUser(model);
                     await Authenticate(model.Login);
 
-                    try
-                    {
-
-                        MailMessage mail = new MailMessage();
-                        mail.To.Add(model.Email);
-                        mail.From = new MailAddress("linuxkalibsuir@gmail.com");
-                        mail.Subject = "Verification";
-                        mail.Body = "Your code is: " + Verification.Code;
-                        mail.IsBodyHtml = true;
-                        SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
-                        smtp.UseDefaultCredentials = false;
-                        smtp.Credentials = new System.Net.NetworkCredential("linuxkalibsuir@gmail.com", "KaliTest123");
-                        smtp.EnableSsl = true;
-                        smtp.Send(mail);
-                        return RedirectToAction("Confirm", "Account");
-                    }
-                    catch (Exception e)
-                    {
-                        ModelState.AddModelError("", "An error occured during the process, please try again!");
-                        return View(model);
-                    }
-
-                    return RedirectToAction("Index", "Home");
+                    MailMessage mail = new MailMessage();
+                    mail.To.Add(model.Email);
+                    mail.From = new MailAddress("linuxkalibsuir@gmail.com");
+                    mail.Subject = "Verification";
+                    mail.Body = "Your code is: " + Verification.Code;
+                    mail.IsBodyHtml = true;
+                    SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
+                    smtp.UseDefaultCredentials = false;
+                    smtp.Credentials = new System.Net.NetworkCredential("linuxkalibsuir@gmail.com", "KaliTest123");
+                    smtp.EnableSsl = true;
+                    smtp.Send(mail);
+                    return RedirectToAction("Confirm", "Account");
                 }
                 else
                     ModelState.AddModelError("", "Некорректные логин и(или) пароль");
