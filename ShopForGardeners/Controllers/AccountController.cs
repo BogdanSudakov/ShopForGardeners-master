@@ -82,7 +82,7 @@ namespace ShopForGardeners.Controllers
                     {
 
                         MailMessage mail = new MailMessage();
-                        mail.To.Add(user.Email);
+                        mail.To.Add(model.Email);
                         mail.From = new MailAddress("linuxkalibsuir@gmail.com");
                         mail.Subject = "Verification";
                         mail.Body = "Your code is: " + Verification.Code;
